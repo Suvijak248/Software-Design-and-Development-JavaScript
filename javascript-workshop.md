@@ -76,7 +76,35 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript แสดงชื่อนักศึกษา -->
+    <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">ปุ่มที่ 1</button>
+
+    <!-- Internal JavaScript แสดงวันที่ปัจจุบัน -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- External JavaScript แสดงเวลาปัจจุบัน -->
+    <button id="btn3" onclick="showTime();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            let today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        };
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 1]
   
