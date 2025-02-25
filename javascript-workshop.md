@@ -1344,6 +1344,167 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 </html>
 
 ```
+```
+body {
+    font-family: 'Sarabun', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34495e;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+button {
+    background-color: #0e64e4;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #2d0fd8;
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+```
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // ตรวจสอบวันที่
+    const checkin = new Date(document.getElementById('checkin').value);
+    const checkout = new Date(document.getElementById('checkout').value);
+    const today = new Date();
+    
+    if (checkin < today) {
+        alert('กรุณาเลือกวันเช็คอินที่ยังไม่ผ่านมา');
+        return;
+    }
+    
+    if (checkout <= checkin) {
+        alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+        return;
+    }
+    
+    // ตรวจสอบรูปแบบเบอร์โทร
+    const phone = document.getElementById('phone').value;
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phone)) {
+        alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลัก)');
+        return;
+    }
+    
+    // คำนวณจำนวนวันที่พัก
+    const days = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+    
+    // แสดงสรุปการจอง
+    const roomtype = document.getElementById('roomtype');
+    const roomtypeText = roomtype.options[roomtype.selectedIndex].text;
+    
+    const summary = `
+        สรุปการจอง:
+        - ชื่อผู้จอง: ${document.getElementById('fullname').value}
+        - ประเภทห้อง: ${roomtypeText}
+        - วันที่เข้าพัก: ${checkin.toLocaleDateString('th-TH')}
+        - วันที่ออก: ${checkout.toLocaleDateString('th-TH')}
+        - จำนวนวันที่พัก: ${days} วัน
+        - จำนวนผู้เข้าพัก: ${document.getElementById('guests').value} ท่าน
+    `;
+    
+    if (confirm(summary + '\n\nยืนยันการจองห้องพัก?')) {
+        alert('จองห้องพักเรียบร้อยแล้ว');
+        this.reset();
+    }
+    
+```
+});
+
+// เพิ่มการตรวจสอบวันที่แบบ Real-time
+document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+});
+
+// จำกัดจำนวนผู้เข้าพักตามประเภทห้อง
+document.getElementById('roomtype').addEventListener('change', function() {
+    const guestsInput = document.getElementById('guests');
+    if (this.value === 'standard') {
+        guestsInput.max = 2;
+    } else if (this.value === 'deluxe') {
+        guestsInput.max = 3;
+    } else if (this.value === 'suite') {
+        guestsInput.max = 4;
+    }
+    
+    if (guestsInput.value > guestsInput.max) {
+        guestsInput.value = guestsInput.max;
+    }
+});
+
+```
+
 [รูปผลการทดลองที่ 3.2.3]
 ![image](https://github.com/user-attachments/assets/92f9a2cb-7fdc-4c09-9050-d79ebb72edbe)
 
