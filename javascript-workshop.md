@@ -298,8 +298,8 @@ number /= 2;          // เท่ากับ number = number / 2
 
     <script>
 
-        let productName = "คอมพิวเตอร์";
-        let productPrice = 15000;
+        let productName = "โทรศัพท์";
+        let productPrice = 8000;
 
         let vatRate = 0.07; // 7% VAT
         let priceWithVAT = productPrice + (productPrice * vatRate);
@@ -314,8 +314,7 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ```
 [รูปผลการทดลองที่ 2.2]
-![image](https://github.com/user-attachments/assets/11bbd870-0040-4504-aef1-56a54d1cab3e)
-
+![image](https://github.com/user-attachments/assets/f7d75883-2d66-468b-b192-bb9b9f10276f)
 
 ### 2.3 การควบคุมการทำงาน
 
