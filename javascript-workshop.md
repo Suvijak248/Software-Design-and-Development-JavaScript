@@ -113,6 +113,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 </html>
 
 ```
+[รูปผลการทดลองที่ 1.1]
 ![image](https://github.com/user-attachments/assets/60b654f1-9221-43a3-a62d-5ee70062b095)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
@@ -169,9 +170,38 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ข้อมูลนักศึกษา</title>
+</head>
+<body>
+    <h2>ข้อมูลนักศึกษา</h2>
+    
+    <p><strong>รหัสนักศึกษา:</strong> <span id="studentID"></span></p>
+    <p><strong>ชื่อนักศึกษา:</strong> <span id="studentName"></span></p>
+    <p><strong>คะแนนสอบกลางภาค:</strong> <span id="midtermScore"></span></p>
+    <p><strong>คะแนนสอบปลายภาค:</strong> <span id="finalScore"></span></p>
+
+    <script>
+        let student = {
+            id: "67030248",
+            name: "สุิวจักขณ์ ลาวัง",
+            midterm: 75,
+            final: 95
+        };
+
+        document.getElementById("studentID").innerText = student.id;
+        document.getElementById("studentName").innerText = student.name;
+        document.getElementById("midtermScore").innerText = student.midterm;
+        document.getElementById("finalScore").innerText = student.final;
+    </script>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 2.1]
+![image](https://github.com/user-attachments/assets/af596a09-1c2f-4369-8ad7-0e60b938030a)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
