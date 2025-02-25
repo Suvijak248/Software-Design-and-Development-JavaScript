@@ -83,16 +83,12 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
     <title>ทดลอง JavaScript</title>
 </head>
 <body>
-    <!-- Inline JavaScript แสดงชื่อนักศึกษา -->
     <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">ปุ่มที่ 1</button>
 
-    <!-- Internal JavaScript แสดงวันที่ปัจจุบัน -->
     <button id="btn2">ปุ่มที่ 2</button>
 
-    <!-- External JavaScript แสดงเวลาปัจจุบัน -->
     <button id="btn3" onclick="showTime();">ปุ่มที่ 3</button>
 
-    <!-- Internal JavaScript -->
     <script>
         document.getElementById('btn2').onclick = function() {
             let today = new Date();
@@ -100,10 +96,10 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
         };
     </script>
 
-    <!-- External JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
+
 
 ```
 [รูปผลการทดลองที่ 1]
