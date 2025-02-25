@@ -643,9 +643,86 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JavaScript</title>
+</head>
+<body>
+    <h2>Test JavaScript</h2>
+
+    <button onclick="getBMI()">คำนวณค่า BMI</button>
+    <button onclick="getGreeting()">ทักทายตามอายุ</button>
+    <button onclick="checkUserPassword()">ตรวจสอบรหัสผ่าน</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <pre id="output"></pre>
+
+    <script>
+        function printResult(text) {
+            document.getElementById("output").textContent = text;
+        }
+
+        function calculateBMI(weight, height) {
+            let bmi = weight / (height * height);
+            return `ค่า BMI ของคุณคือ ${bmi.toFixed(2)}`;
+        }
+
+        function getBMI() {
+            let weight = parseFloat(prompt("กรอกน้ำหนักของคุณ (กิโลกรัม):"));
+            let height = parseFloat(prompt("กรอกส่วนสูงของคุณ (เมตร):"));
+
+            if (!isNaN(weight) && !isNaN(height) && height > 0) {
+                printResult(calculateBMI(weight, height));
+            } else {
+                printResult("กรุณากรอกค่าน้ำหนักและส่วนสูงที่ถูกต้อง!");
+            }
+        }
+
+        function greetUser(name, age) {
+            if (age < 12) {
+                return `สวัสดีหนูน้อย ${name}!`;
+            } else if (age < 20) {
+                return `เฮ้ ${name}!`;
+            } else {
+                return `สวัสดีครับ ${name}!`;
+            }
+        }
+
+        function getGreeting() {
+            let name = prompt("กรอกชื่อของคุณ:");
+            let age = parseInt(prompt("กรอกอายุของคุณ:"));
+
+            if (name && !isNaN(age)) {
+                printResult(greetUser(name, age));
+            } else {
+                printResult("กรุณากรอกชื่อและอายุที่ถูกต้อง!");
+            }
+        }
+
+    
+        const checkPassword = (password) => {
+            return password.length > 8 ? "รหัสผ่านปลอดภัย" : "รหัสผ่านสั้นเกินไป!";
+        };
+
+        function checkUserPassword() {
+            let password = prompt("กรอกรหัสผ่านของคุณ:");
+            if (password) {
+                printResult(checkPassword(password));
+            } else {
+                printResult("กรุณากรอกรหัสผ่าน!");
+            }
+        }
+    </script>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 2.4.1]
+![image](https://github.com/user-attachments/assets/2517d6e4-95af-43c1-938a-e466ea6c3efa)
+![image](https://github.com/user-attachments/assets/0c9df4ec-a496-4a62-a299-9d85a17ed556)
+![image](https://github.com/user-attachments/assets/2aac3ca7-91df-4e06-af88-a5961c3fc73b)
 
 
 
