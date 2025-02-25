@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/2449f67c-6055-435f-b12e-a2f205ae02a1)# การทดลอง พื้นฐาน JavaScript และการใช้งานร่วมกับ HTML/CSS
 ## การทดลองที่ 1 : ทำความรู้จักกับ JavaScript
 ###  การเพิ่ม JavaScript ลงในเว็บเพจ
 
