@@ -1342,8 +1342,9 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
     <script src="script.js"></script> 
 </body>
 </html>
-
 ```
+```
+
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
@@ -1430,6 +1431,7 @@ button:hover {
     }
 }
 
+```
 ```
 document.getElementById('bookingForm').addEventListener('submit', function(e) {
     e.preventDefault();
