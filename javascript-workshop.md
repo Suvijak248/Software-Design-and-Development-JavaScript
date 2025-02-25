@@ -763,9 +763,96 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตรวจสอบข้อมูล</title>
+</head>
+<body>
+
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <label for="password">รหัสผ่าน: </label>
+    <input type="password" id="password" placeholder="กรอกรหัสผ่าน" required />
+    <button type="button" onclick="checkPasswordLength()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+
+    <hr>
+
+    <h2>คำนวณ BMI</h2>
+    <label for="weight">น้ำหนัก (กก.): </label>
+    <input type="number" id="weight" placeholder="กรอกน้ำหนัก" required />
+    <br><br>
+    <label for="height">ส่วนสูง (เมตร): </label>
+    <input type="number" step="0.01" id="height" placeholder="กรอกส่วนสูง" required />
+    <br><br>
+    <button type="button" onclick="calculateBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+
+    <hr>
+
+    <h2>ทักทายตามอายุ</h2>
+    <label for="name">ชื่อ: </label>
+    <input type="text" id="name" placeholder="กรอกชื่อ" required />
+    <br><br>
+    <label for="age">อายุ: </label>
+    <input type="number" id="age" placeholder="กรอกอายุ" required />
+    <br><br>
+    <button type="button" onclick="greetBasedOnAge()">แสดงคำทักทาย</button>
+    <p id="ageGreeting"></p>
+
+    <script>
+        // ฟังก์ชันคำนวณ BMI
+        const calculateBMI = () => {
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('bmiResult').innerText = 'กรุณากรอกข้อมูลน้ำหนักและส่วนสูงให้ถูกต้อง';
+                return;
+            }
+
+            const bmi = weight / (height ** 2);
+            document.getElementById('bmiResult').innerText = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)}`;
+        };
+
+        // ฟังก์ชันทักทายตามอายุ
+        const greetBasedOnAge = () => {
+            let name = document.getElementById('name').value.trim();
+            let age = parseInt(document.getElementById('age').value);
+
+            if (isNaN(age) || age <= 0 || name === '') {
+                document.getElementById('ageGreeting').innerText = 'กรุณากรอกข้อมูลชื่อและอายุให้ถูกต้อง';
+                return;
+            }
+
+            let greeting = (age < 18)
+                ? `สวัสดีครับ ${name} นู๋`
+                : (age >= 18 && age < 60)
+                    ? `ดีครับ ${name}`
+                    : `สวัสดีครับ ${name} คนแก่`;
+
+            document.getElementById('ageGreeting').innerText = greeting;
+        };
+
+        // ฟังก์ชันตรวจสอบรหัสผ่าน
+        const checkPasswordLength = () => {
+            let password = document.getElementById('password').value;
+
+            if (password.length === 8) {
+                document.getElementById('passwordResult').innerText = '✅ รหัสผ่านถูกต้อง';
+            } else {
+                document.getElementById('passwordResult').innerText = '❌ รหัสผ่านต้องมีความยาว 8 ตัวอักษร';
+            }
+        };
+    </script>
+
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 2.4.2]
+![image](https://github.com/user-attachments/assets/873f1247-94c1-425e-9c88-0da596e5b8be)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -833,9 +920,50 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณ BMI</title>
+</head>
+<body>
+    <h2>คำนวณค่าดัชนีมวลกาย (BMI)</h2>
+
+    <label for="weight">น้ำหนัก (กก.): </label>
+    <input type="number" id="weight" placeholder="กรอกน้ำหนัก" required>
+    <br><br>
+
+    <label for="height">ส่วนสูง (ซม.): </label>
+    <input type="number" id="height" placeholder="กรอกส่วนสูง" required>
+    <br><br>
+
+    <button onclick="calculateBMI()">คำนวณ</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="bmiResult"></p>
+
+    <script>
+        const calculateBMI = () => {
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value) / 100; // แปลงจาก cm เป็น m
+
+            if (isNaN(weight) || isNaN(height) || height <= 0) {
+                document.getElementById('bmiResult').innerText = "กรุณากรอกข้อมูลให้ถูกต้อง";
+                return;
+            }
+
+            let bmi = weight / (height * height); // สูตรคำนวณ BMI
+            let status = (bmi < 18.5) ? "ผอม" : (bmi < 25) ? "สมส่วน" : "อ้วน";
+
+            document.getElementById('bmiResult').innerText = `ค่า BMI ของคุณ: ${bmi.toFixed(2)} (${status})`;
+        };
+    </script>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 3.1]
+![image](https://github.com/user-attachments/assets/095f2d6e-d5ab-4742-a739-d103dc7a6f4b)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -995,9 +1123,65 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <link rel="stylesheet" href="style.css"> <!-- เชื่อมโยงกับไฟล์ CSS -->
+</head>
+<body>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 3.2.2]
+![image](https://github.com/user-attachments/assets/0ecfd68d-ce5a-4f67-8b00-dd01173b8fec)
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -1102,9 +1286,68 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script src="script.js"></script> 
+</body>
+</html>
+
+
 ```
 [รูปผลการทดลองที่ 3.2.3]
+![image](https://github.com/user-attachments/assets/92f9a2cb-7fdc-4c09-9050-d79ebb72edbe)
 
 
 ## คำแนะนำเพิ่มเติม
