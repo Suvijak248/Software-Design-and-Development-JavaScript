@@ -83,22 +83,14 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
     <title>ทดลอง JavaScript</title>
 </head>
 <body>
-    <!-- Inline JavaScript -->
     <button onclick="alert('สุวิจกัขณ์ ลาวัง')">ปุ่มที่ 1</button>
 
-    <!-- ทดสอบ Internal JavaScript -->
     <button id="btn2">ปุ่มที่ 2</button>
 
-    <!-- ทดสอบ External JavaScript -->
     <button id="btn3">ปุ่มที่ 3</button>
-
-    <!-- กล่องข้อความและปุ่มแสดงข้อความ -->
-    <input type="text" id="textBox" placeholder="พิมพ์ข้อความที่นี่">
-    <button onclick="showText()">แสดงข้อความ</button>
-    
+ 
     <p id="output"></p>
 
-    <!-- Internal JavaScript -->
     <script>
         document.getElementById('btn2').onclick = function() {
             let today = new Date();
