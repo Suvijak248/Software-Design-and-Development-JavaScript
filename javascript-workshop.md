@@ -1431,7 +1431,7 @@ button:hover {
     }
 }
 
-```
+
 ```
 document.getElementById('bookingForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1502,7 +1502,6 @@ document.getElementById('roomtype').addEventListener('change', function() {
         guestsInput.value = guestsInput.max;
     }
 });
-
 
 ```
 [รูปผลการทดลองที่ 3.2.3]
