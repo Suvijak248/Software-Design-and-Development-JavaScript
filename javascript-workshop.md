@@ -1,4 +1,4 @@
-# การทดลอง พื้นฐาน JavaScript และการใช้งานร่วมกับ HTML/CSS
+![image](https://github.com/user-attachments/assets/2449f67c-6055-435f-b12e-a2f205ae02a1)# การทดลอง พื้นฐาน JavaScript และการใช้งานร่วมกับ HTML/CSS
 ## การทดลองที่ 1 : ทำความรู้จักกับ JavaScript
 ###  การเพิ่ม JavaScript ลงในเว็บเพจ
 
@@ -253,9 +253,70 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณคะแนนเฉลี่ย</title>
+</head>
+<body>
+    <h2>คำนวณคะแนนเฉลี่ย</h2>
+    
+    <p>คะแนนวิชา 1: <span id="score1"></span></p>
+    <p>คะแนนวิชา 2: <span id="score2"></span></p>
+    <p>คะแนนวิชา 3: <span id="score3"></span></p>
+    
+    <h3>คะแนนเฉลี่ย: <span id="averageScore">-</span></h3>
+
+    <script>
+        let score1 = 70;
+        let score2 = 80;
+        let score3 = 90;
+
+        let average = (score1 + score2 + score3) / 3;
+
+        document.getElementById("score1").innerText = score1;
+        document.getElementById("score2").innerText = score2;
+        document.getElementById("score3").innerText = score3;
+
+        document.getElementById("averageScore").innerText = average.toFixed(2);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณราคาสินค้าหลังรวม VAT</title>
+</head>
+<body>
+    <h2>คำนวณราคาสินค้าหลังรวม VAT 7%</h2>
+    
+    <p><strong>ชื่อสินค้า:</strong> <span id="productName"></span></p>
+    <p><strong>ราคาสินค้า:</strong> <span id="productPrice"></span> บาท</p>
+    <h3>ราคาสินค้าหลังรวม VAT 7%: <span id="priceWithVAT">-</span> บาท</h3>
+
+    <script>
+
+        let productName = "คอมพิวเตอร์";
+        let productPrice = 15000;
+
+        let vatRate = 0.07; // 7% VAT
+        let priceWithVAT = productPrice + (productPrice * vatRate);
+
+        document.getElementById("productName").innerText = productName;
+        document.getElementById("productPrice").innerText = productPrice;
+
+        document.getElementById("priceWithVAT").innerText = priceWithVAT.toFixed(2);
+    </script>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 2.2]
+![image](https://github.com/user-attachments/assets/11bbd870-0040-4504-aef1-56a54d1cab3e)
+
 
 ### 2.3 การควบคุมการทำงาน
 
