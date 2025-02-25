@@ -83,29 +83,46 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
     <title>ทดลอง JavaScript</title>
 </head>
 <body>
-    <button onclick="alert('สุวิจักขณ์ ลาวัง')">ปุ่มที่ 1</button>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('สุวิจกัขณ์ ลาวัง')">ปุ่มที่ 1</button>
 
+    <!-- ทดสอบ Internal JavaScript -->
     <button id="btn2">ปุ่มที่ 2</button>
 
-    <button id="btn3" onclick="showTime();">ปุ่มที่ 3</button>
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3">ปุ่มที่ 3</button>
 
+    <!-- กล่องข้อความและปุ่มแสดงข้อความ -->
+    <input type="text" id="textBox" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showText()">แสดงข้อความ</button>
+    
+    <p id="output"></p>
+
+    <!-- Internal JavaScript -->
     <script>
         document.getElementById('btn2').onclick = function() {
             let today = new Date();
             alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
         };
+
+        document.getElementById('btn3').onclick = function() {
+            let currentTime = new Date();
+            alert('เวลาปัจจุบัน: ' + currentTime.toLocaleTimeString());
+        };
+
+        function showText() {
+            let text = document.getElementById('textBox').value;
+            document.getElementById('output').innerText = text;
+        }
     </script>
 
     <script src="script.js"></script>
 </body>
 </html>
 
-
-
 ```
-![image](https://github.com/user-attachments/assets/e3571a93-8f77-4fa5-ac30-fbb61d1147a1)
+![image](https://github.com/user-attachments/assets/60b654f1-9221-43a3-a62d-5ee70062b095)
 
-  
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
 
