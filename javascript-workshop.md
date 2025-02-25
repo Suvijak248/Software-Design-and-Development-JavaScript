@@ -1430,6 +1430,7 @@ button:hover {
         font-size: 14px;
     }
 }
+```
 ``` java
 document.getElementById('bookingForm').addEventListener('submit', function(e) {
     e.preventDefault();
