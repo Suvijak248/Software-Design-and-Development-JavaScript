@@ -1344,7 +1344,7 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 </html>
 
 ```
-```
+``` css
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
@@ -1430,7 +1430,7 @@ button:hover {
         font-size: 14px;
     }
 }
-```
+``` java
 document.getElementById('bookingForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -1479,7 +1479,6 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
         this.reset();
     }
     
-```
 });
 
 // เพิ่มการตรวจสอบวันที่แบบ Real-time
