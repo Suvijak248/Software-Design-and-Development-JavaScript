@@ -1342,8 +1342,6 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
     <script src="script.js"></script> 
 </body>
 </html>
-```
-```
 
 ```
 [รูปผลการทดลองที่ 3.2.3]
