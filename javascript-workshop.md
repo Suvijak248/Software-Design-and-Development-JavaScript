@@ -83,7 +83,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
     <title>ทดลอง JavaScript</title>
 </head>
 <body>
-    <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">ปุ่มที่ 1</button>
+    <button onclick="alert('สุวิจักขณ์ ลาวัง')">ปุ่มที่ 1</button>
 
     <button id="btn2">ปุ่มที่ 2</button>
 
@@ -101,8 +101,10 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 </html>
 
 
+
 ```
-[รูปผลการทดลองที่ 1]
+![image](https://github.com/user-attachments/assets/e3571a93-8f77-4fa5-ac30-fbb61d1147a1)
+
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
